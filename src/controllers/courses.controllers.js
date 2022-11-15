@@ -2,8 +2,7 @@ const CourseServices = require("../services/courses.services");
 
 const getAllCoursesByUSer = async(req, res, next) => {
     try {
-        const {userId} = req.params;
-        const sendInformation = await CourseServices.getByIdUser(userId);
+        const sendInformation = await CourseServices.getByIdUser();
         res.json(sendInformation);
     } catch(error) {
         next({

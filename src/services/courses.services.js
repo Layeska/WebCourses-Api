@@ -5,10 +5,9 @@ const Videos = require("../models/videos.models");
 
 
 class courseServices {
-    static async getByIdUser(userId) {
+    static async getByIdUser() {
         try {
             const result = await UserCourses.findAll({ 
-                where: {userId},
                 attributes: {
                     exclude: ["id", "userId", "courseId", "createdAt", "updatedAt", "course_id", "user_id"]
                 },
