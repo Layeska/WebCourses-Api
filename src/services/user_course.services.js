@@ -1,11 +1,10 @@
-const UserCourse = require("../controllers/user_courses.controllers");
+const UserCourse = require("../models/usercourses.models");
 
 class UserCourses {
-    static async addCourserBy(userId, body ) {
+    static async addCourserBy(userId, courseId ) {
         try {
-            const result = await UserCourse.create({
-                userId: 1, courseId: 2
-            });
+            const result = await UserCourse.create({userId: userId, courseId: courseId});
+            console.log("entrando al servicio!!!!");
             return result;
         } catch(error) { throw error; }
     }

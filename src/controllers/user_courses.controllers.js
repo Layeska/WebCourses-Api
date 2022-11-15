@@ -1,11 +1,13 @@
 const UserCourserService = require("../services/user_course.services");
 
 const addCourseAtUser = async(req, res, next) => {
+    console.log("*** Entrando al controlador!!!");
     try {
         const {userId} = req.params;
-        const body = req.body.courseId;
-        console.log(body, userId);
-        const addNewCourse = await UserCourserService.addCourseAtUser(userId, body);
+        const {courseId} = req.body;
+        console.log("capturando datos del controlador!!!!");
+        console.log(userId, courseId);
+        const addNewCourse = await UserCourserService.addCourserBy(Number(userId), courseId);
         res.json(addNewCourse);
     } catch(error) {
         next({
