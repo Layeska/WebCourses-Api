@@ -1,6 +1,5 @@
 const CourseServices = require("../services/courses.services");
 
-
 const getAllCoursesByUSer = async(req, res, next) => {
     try {
         const {userId} = req.params;
@@ -28,12 +27,11 @@ const getShowCourse = async(req, res, next) => {
     }
 };
 
-
 const addCourse = async(req, res, next) => {
     try {
         const course = req.body;
         const result = await CourseServices.create(course);
-        res.json(result);
+        res.json({message: "Successfully Created Course"});
     } catch(error) {
         next({
             status: 400, 

@@ -1,18 +1,5 @@
 const UserServices = require("../services/user.services");
 
-const getAllUsers = async(req, res, next) => {
-    try {
-        const showUser = await UserServices.getAll();
-        res.json(showUser);
-    } catch(error) {
-        next({
-            status: 500, 
-            errorContent: error,
-            message: "An error occurred while retrieving data from the DB"
-        });
-    }
-};
-
 const getByUserId = async(req, res, next) => {
     try {
         const {id} = req.params;
@@ -45,7 +32,7 @@ const createUser = async(req, res, next) => {
     try {
         const bodyUser = req.body;
         const newUser = await UserServices.addUser(bodyUser);
-        res.json(newUser);
+        res.json({message: "Successfully Created User"});
     } catch(error) {
         next({
             status: 418,
@@ -60,7 +47,7 @@ const updateItems = async(req, res, next) => {
         const {id} = req.params;
         const newBody = req.body;
         const DataUpdate = await UserServices.update(id, newBody);
-        res.json(DataUpdate);
+        res.json({message: "User Successfully Deleted"});
     } catch(error) {
         next({
             status: 400,
@@ -70,34 +57,9 @@ const updateItems = async(req, res, next) => {
     }
 };
 
-/*
-{
-    course_id: 1
-}
-*/
-
-//! Me da error!!!! 
-/*const addCourseByUser = async(req, res, next) => {
-    try {
-        console.log(req.body);
-        const {id} = req.params;
-        const body = req.body;
-        const addNewCourse = await UserServices.addCourseAtUser(body, userId);
-        res.json(addNewCourse);
-    } catch(error) {
-        next({
-            status: 400,
-            errorContent: error,
-            message: "Review submitted information" 
-        });
-    }
-};*/
-
 module.exports = {
-    getAllUsers, 
     getByUserId,
     getUserByCourse,
     createUser,
     updateItems,
-    
 };

@@ -3,13 +3,6 @@ const Courses = require("../models/courses.models");
 const UserCourses = require("../models/usercourses.models");
 
 class UserServices {
-    static async getAll() {
-        try {
-            const user = await Users.findAll({attributes: ["id", "firstName", "lastName", "email"]});
-            return user;
-        } catch(error) { throw error; }
-    }
-
     static async getById(id) {
         try {
             const filter = await Users.findByPk(id,{attributes: ["firstName", "lastName", "email"]});
@@ -46,17 +39,6 @@ class UserServices {
         } catch(error) { throw error; }
     }
 
-    //! Me da error!!!! 
-   /* static async addCourseAtUser(body, id) {
-        try {
-            //const updateCourse = await UserCourses.create(courses);
-            //const {id} = updateCourse;
-            const result = await UserCourses.create(body, {where: {id}});
-
-            return result;
-        } catch(error) { throw error; }
-    }*/
-
     static async update(id, body) {
         try {
             const update = await Users.update({
@@ -67,8 +49,6 @@ class UserServices {
             return update;
         } catch(error) { throw error; }
     }
-
-    
 };
 
 module.exports = UserServices;

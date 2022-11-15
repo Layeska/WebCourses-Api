@@ -5,6 +5,6 @@ const authorization = require("../middlewares/auth.middlewares");
 
 const route = Router();
 
-route.post("/courses/:userId/courses",addCourseAtUser);
+route.post("/courses/:userId/courses", authorization, addCourseAtUser);
 
 module.exports = route;

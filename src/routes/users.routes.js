@@ -1,21 +1,18 @@
 const {Router} = require("express");
-
-const { getAllUsers, getByUserId, getUserByCourse,
-        createUser, updateItems, addCourseByUser } = require("../controllers/users.controllers");
+const { getByUserId, getUserByCourse, createUser, updateItems } = require("../controllers/users.controllers");
 
 const router = Router();
 
-router.get("/users", getAllUsers);
-
+//++ Get a user by their id
 router.get("/users/:id", getByUserId);
 
+//++ Get a user along with courses where they are subscribed
 router.get("/users/:id/course", getUserByCourse);
 
+//++ Create a user
 router.post("/users", createUser);
 
-//! Me da error!!!! 
-//router.post("/users/:userId/course", addCourseByUser);
-
+//++ Update a user, (only names and passwords will be allowed)
 router.patch("/users/:id", updateItems);
 
 module.exports = router;

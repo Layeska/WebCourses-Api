@@ -1,6 +1,6 @@
 const Video = require("../services/videos.services");
 
-const addVideo = async(req, res, error) => {
+const addVideo = async(req, res, next) => {
     try {
         const newVideo = req.body;
         const result = await Video.create(newVideo);
@@ -14,7 +14,7 @@ const addVideo = async(req, res, error) => {
     }
 }
 
-const deleteVideo = async(req, res, error) => {
+const deleteVideo = async(req, res, next) => {
     try {
         const {id} = req.params;
         const result = await Video.delete(id);
@@ -28,7 +28,4 @@ const deleteVideo = async(req, res, error) => {
     }
 }
 
-module.exports = {
-    addVideo,
-    deleteVideo
-}
+module.exports = { addVideo, deleteVideo };

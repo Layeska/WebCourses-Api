@@ -16,8 +16,6 @@ class courseServices {
                     model: Courses,
                     as: "course",
                 }
-                
-               // attributes: ["id", "title", "description", "instructor"]
             });
             return result;
         } catch(error) { throw error; }
