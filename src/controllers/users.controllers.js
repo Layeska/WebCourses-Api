@@ -47,7 +47,7 @@ const updateItems = async(req, res, next) => {
         const {id} = req.params;
         const newBody = req.body;
         const DataUpdate = await UserServices.update(id, newBody);
-        res.json({message: "User Successfully Deleted"});
+        res.json({message: "User Edit Successfully!"});
     } catch(error) {
         next({
             status: 400,

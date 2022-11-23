@@ -45,7 +45,10 @@ class UserServices {
                 firstName: body.firstName, 
                 lastName: body.lastName, 
                 password: body.password
-            }, {where: {id}});
+            }, {
+                where: {id},
+                individualHooks: true
+            });
             return update;
         } catch(error) { throw error; }
     }
